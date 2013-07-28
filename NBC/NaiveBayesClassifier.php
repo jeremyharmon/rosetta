@@ -88,7 +88,7 @@ class NaiveBayesClassifier {
 			foreach($keywords as $word) {
 				$key = "{$word}{$this->store->delimiter}{$set}";
 				if($wordCountFromSet[$key] > 0)
-					$P['sets'][$set] += $wordCountFromSet[$key] / $setWordCounts[$set];
+					@$P['sets'][$set] += $wordCountFromSet[$key] / $setWordCounts[$set];
 			}
 
 			if(!is_infinite($P['sets'][$set]) && $P['sets'][$set] > 0)
