@@ -1,0 +1,4 @@
+Since we don't care to track changes of the samples we are not storing them in git, instead download
+the compressed archive and extract it into the Samples folder.
+
+    http://labs.zord-git.tk/rosetta/Samples.tar.xz
