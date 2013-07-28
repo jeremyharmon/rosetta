@@ -97,7 +97,7 @@ class NaiveBayesClassifier {
 
 		//arsort($score);
 
-		return array_slice($score, $offset, $count-1);
+		return $score; //array_slice($score, $offset, $count-1);
 	}
 	
 	public function blacklist($words = array()) {
