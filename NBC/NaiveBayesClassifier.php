@@ -91,7 +91,7 @@ class NaiveBayesClassifier {
 					@$P['sets'][$set] += $wordCountFromSet[$key] / $setWordCounts[$set];
 			}
 
-			if(!is_infinite($P['sets'][$set]) && $P['sets'][$set] > 0)
+			if(!@is_infinite($P['sets'][$set]) && @$P['sets'][$set] > 0)
 				$score[$set] = $P['sets'][$set];
 		}
 
