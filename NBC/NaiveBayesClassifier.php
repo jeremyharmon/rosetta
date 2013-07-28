@@ -95,7 +95,7 @@ class NaiveBayesClassifier {
 				$score[$set] = $P['sets'][$set];
 		}
 
-		arsort($score);
+		//arsort($score);
 
 		return array_slice($score, $offset, $count-1);
 	}
