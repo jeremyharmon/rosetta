@@ -8,9 +8,9 @@
  \******************************************************************************/
 
 ini_set('memory_limit','512M');
-require_once './NBC/NaiveBayesClassifier.php';
+require_once('NBC/NaiveBayesClassifier.php');
 
-$Extensions[] = array('Lang' => 'php', 'Exts' => array('php', 'phtml', 'php4', 'php5', 'phps'));
+$Extensions[] = array('Lang' => 'php', 'Exts' => array('php', 'phtml', 'php4', 'php5', 'phps', 'inc'));
 $Extensions[] = array('Lang' => 'c++', 'Exts' => array('cc', 'cpp', 'hpp', '.hh', '.hxx', '.h++', '.tcc'));
 $Extensions[] = array('Lang' => 'c', 'Exts' => array('c', 'h'));
 $Extensions[] = array('Lang' => 'ruby', 'Exts' => array('rb'));
@@ -18,7 +18,7 @@ $Extensions[] = array('Lang' => 'python', 'Exts' => array('py'));
 $Extensions[] = array('Lang' => 'perl', 'Exts' => array('pm', 'pl', '.t', '.pod'));
 $Extensions[] = array('Lang' => 'java', 'Exts' => array('java', 'class'));
 
-function Rosetta_getLanguage($fileName) {
+function Rosetta_getLanguage($fileName, $Source) {
     global $Extensions, $numExtensions;
     
     $nbc = new NaiveBayesClassifier(array(
@@ -33,14 +33,14 @@ function Rosetta_getLanguage($fileName) {
             'debug' => FALSE
     ));
 
-    $Langs = $nbc->classify(file_get_contents($fileName));
+    $Langs = $nbc->classify($Source);
     
     // Add to the score of a language based on file extension:
     $fileExt = strtolower(pathinfo($fileName)['extension']);
     
     foreach( $Extensions as $Ext ) {
         if( in_array($fileExt, $Ext['Exts'])) {
-            $Langs[$Ext['Lang']] += 0.1;
+            @$Langs[$Ext['Lang']] += 0.5;
             break;
         }
     }
