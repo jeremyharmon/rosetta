@@ -1,6 +1,6 @@
 #!/bin/sh
 
-wget http://labs.zord-git.tk/rosetta/Samples.tar.xz
+wget https://www.dropbox.com/s/s9qly6v05j1sktr/Samples.tar.xz
 
 mkdir Samples
 cd Samples
